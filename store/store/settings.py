@@ -21,6 +21,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'crispy_forms',
+    
+    'pages.apps.PagesConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -79,6 +84,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+LOGIN_URL = 'signin'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'home'
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -90,3 +101,5 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
