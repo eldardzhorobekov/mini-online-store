@@ -1,5 +1,6 @@
 from django.db import models
 from products.helpers import slugify
+from products.managers import ProductManager
 
 
 DEFAULT_CATEGORY_SLUG = 'no-categories'
@@ -22,7 +23,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    image = models.ImageField(upload_to='products', blank=True, null=True)
+    image = models.ImageField(upload_to='products', default='products/default.jpg', blank=False, null=False)
     title = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(
@@ -31,6 +32,8 @@ class Product(models.Model):
         null=True,
         related_name='products'
     )
+
+    objects = ProductManager()
 
     class Meta:
         ordering = ['id']
